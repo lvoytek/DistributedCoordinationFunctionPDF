@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\usepackage[margin=0.5in]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
 \geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
 %\geometry{landscape}                % Activate for for rotated page geometry
 \usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
@@ -22,6 +22,7 @@
 \usepackage{cases}		 
 \usepackage{cutwin}
 \usepackage{enumerate}
+\usepackage{enumitem}
 \usepackage{epstopdf}
 \usepackage{graphicx}
 \usepackage{ifthen}
@@ -66,10 +67,11 @@
 \clearpage
 
 \section{Throughput T}
+
+\renewcommand{\labelenumi}{{\bf\alph{enumi})}}
 \begin{enumerate}
 \item {\bf Node A:} Throughput T (Kbps) vs. rate \(\lambda{}\) (frames/sec) for scenarios A and B, and CSMA
 implementations 1 and 2.
-
 \begin{figure}[htp]
     \centering
     \includegraphics[width=5in]{1A.png}
@@ -79,19 +81,18 @@ implementations 1 and 2.
 
 In general, for each Node A using a control \(\lambda{}\) value equal to that of C, the throughput begins with a decrease, followed by a gradual increase as the frame rate increases.
 
+
+\item {\bf Node C:} Throughput T (Kbps) vs. rate \(\lambda{}\) (frames/sec) for scenarios A and B, and CSMA
+implementations 1 and 2.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=5in]{1B.png}
+    \caption{Node A Throughput when \(\lambda{} = \lambda{}_A = \lambda{}_C\) }
+    \label{fig:1A}
+\end{figure}
+
 \end{enumerate}
-
-\bibliographystyle{humanbio}
-\begin{thebibliography}{}
-
-\bibitem[\protect\astroncite{Rosen}{2012}]{Rosen:2012:Discrete}
-Rosen, K.~H. 2012.
-\newblock {\em Discrete Mathematics and its Applications}.
-\newblock McGraw-Hill Education, New York, {Seventh} edition.
-
-Model Homework - Lee Altenberg
-
-\end{thebibliography}
 
 \end{document}  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
