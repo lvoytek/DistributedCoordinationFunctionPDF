@@ -74,7 +74,7 @@
 
     \renewcommand{\labelenumi}{{\bf\alph{enumi})}}
     \begin{enumerate}
-        \item { 
+        \item { %1A
             {\bf Node A:} Throughput T (Kbps) vs. rate \(\lambda{}\) (frames/sec) for scenarios A and B, and CSMA implementations 1 and 2.
             
             \begin{figure}[!htb]
@@ -84,12 +84,12 @@
                 \label{fig:1A}
             \end{figure}
             
-            In general, for each Node A using a control \(\lambda{}\) value equal to that of C, the throughput begins with a decrease, followed by a gradual increase as the frame rate increases. The initial decrease is due to the amount of frames coming in overwhelming the network. However, it steadily increases later on as it takes advantage of the larger maximum back off window delays because of all the collisions.The throughput of simulation B2 takes a different turn though. This is because, with the RSA and hidden terminal, collisions are spread out and it cannot take advantage of the increasing back off windows.
+            In general, for each Node A using a control \(\lambda{}\) value equal to that of C, the throughput begins with a decrease, followed by a gradual increase as the frame rate increases. The initial decrease is due to the amount of frames coming in overwhelming the network. However, it steadily increases later on as it takes advantage of the larger maximum backoff window delays because of all the collisions.The throughput of simulation B2 takes a different turn though. This is because, with the RTS and hidden terminal, collisions are spread out and it cannot take advantage of the increasing backoff windows.
         }
         
 \clearpage
 
-        \item {
+        \item { %1B
             {\bf Node C:} Throughput T (Kbps) vs. rate \(\lambda{}\) (frames/sec) for scenarios A and B, and CSMA implementations 1 and 2.
             
             \begin{figure}[!htb]
@@ -99,7 +99,7 @@
                 \label{fig:1B}
             \end{figure}
 
-            Node C, unsurprisingly, follows a similar pattern to Node A in throughput when their \(\lambda{}\) values are equivalent. However in this case the throughput skips the slight decrease and follows through with a general increase. This is also the result of increasing back off times on A combined with the luck of often being the first node to transmit during a certain set of frames. B1 does not quite take advantage of this as it was probably hit with unfortunate frame timing, exacerbated by the fact that the nodes were unable to listen for each other's transmissions.
+            Node C, unsurprisingly, follows a similar pattern to Node A in throughput when their \(\lambda{}\) values are equivalent. However in this case the throughput skips the slight decrease and follows through with a general increase. This is also the result of increasing backoff times on A combined with the luck of often being the first node to transmit during a certain set of frames. B1 does not quite take advantage of this as it was probably hit with unfortunate frame timing, exacerbated by the fact that the nodes were unable to listen for each other's transmissions.
         }
         
 \clearpage
@@ -113,12 +113,12 @@
                 \label{fig:1C}
             \end{figure}
             
-            Node A shows a generally increasing Throughput as lambda increases while \(\lambda{}_A = 2\lambda{}\). This makes sense as over time the disparity between the two values increases exponentially. Given the sheer amount of frames arriving at A, its throughput would have to increase to keep up with the greater demand compared to C. As per usual, however, there is an outlier. B2 loses throughput because most of its RSA and CSA frames are colliding with C's, which only gets worse with more frames once the back off window is saturated.
+            Node A shows a generally increasing Throughput as lambda increases while \(\lambda{}_A = 2\lambda{}\). This makes sense as over time the disparity between the two values increases exponentially. Given the sheer amount of frames arriving at A, its throughput would have to increase to keep up with the greater demand compared to C. As per usual, however, there is an outlier. B2 loses throughput because most of its RTS and CTS frames are colliding with C's, which only gets worse with more frames once the backoff window is saturated.
             
         }
         
 \clearpage
-        \item {
+        \item { %1D
             {\bf Node C:} Throughput T (Kbps) vs. rate \(\lambda{}\) (frames/sec) for scenarios A and B, and CSMA implementations 1 and 2, when \(\lambda{}_A = 2\lambda{}\).
             
             \begin{figure}[!htb]
@@ -128,7 +128,7 @@
                 \label{fig:1D}
             \end{figure}
 
-            ----Explain 1d----
+            With the imbalance between \(\lambda{}_A\) and \(\lambda{}_C\), Node C sees results that are all over the place. In general, though, the overall throughput is at around half that of A. This makes sense as Node C has half as many frames arriving. The A simulations are fairly constant as \(\lambda{}\) increases because collision backoff times have maxed out at this point due to Node A overwhelming the channel. B1 also experiences this up until the point where there are so many A frames that none of C's can get through. B2, on the other hand, spikes when it manages to find a sweet spot for RTS collisions that allows it to transmit between A frames.
         }
         
     \end{enumerate}
@@ -148,7 +148,7 @@
                 \label{fig:2A}
             \end{figure}
 
-            ----Explain 2A----
+            It may seem counter-intuitive that the collisions of A decrease as the rate of arrival increases. The reason for this is the increasing backoff windows. As more frames come in, a few collisions will push the window to its maximum size, in which fewer new collisions happen. A2 starts off with a particularly high number of collisions because it uses RTS and CTS frames prior to the data. They are much smaller and are more likely to collide often as the countdown collision possibilities increase over a given time interval.  
         }    
     
     
@@ -163,7 +163,7 @@
                 \label{fig:2B}
             \end{figure}
 
-            ----Explain 2B----
+            For collisions happening between nodes on the same collision domain without outside interference, the number of collisions will always be the same. Collisions in this situation can only happen when both nodes' countdowns hit zero at the same time. Hence, for both A simulations, the collisions for node C are the same as node A. As for the B simulations, collisions can happen at any time for each node, but both nodes will take the collision into account. This means that the overall number of collisions for nodes A and C are more or less the same, with slight variation due to the propagation delay. 
         }    
 \clearpage  
         \item {
@@ -176,7 +176,7 @@
                 \label{fig:2C}
             \end{figure}
 
-            ----Explain 2C----
+            In the case where \(\lambda{}_A\) is doubled, not much changes in terms of collisions. This is due to the effects of backoff window increases and rate increases cancelling each other out. Once again, A2 starts off very large because of the short delays of determining status with RTS. 
         }        
     
 \clearpage  
@@ -190,7 +190,7 @@
                 \label{fig:2D}
             \end{figure}
 
-            ----Explain 2D----
+            Like before, the collisions of node C just about match the collisions of node A. The A simulations are exactly the same as the rule of collision on zero countdown has not changed. Meanwhile the B simulations are almost the same with variation from propagation delays.
         }        
     
     
@@ -212,7 +212,7 @@
                 \label{fig:3A}
             \end{figure}
 
-            The Fairness Index is the fraction of time that the channel is occupied by a pair A \(\rightarrow\) B over the fraction of time that the channel is occupied by pair C \(\rightarrow\) D as a function of \(\lambda\). Therefore, a high Fairness Index indicates that A is transmitting a lot, and the simulation is 'unfair' to pair C \(\rightarrow\) D. As shown in Figure 9, the fairness index when \(\lambda{} = \lambda{}_A = \lambda{}_C\) is generally around 1-2 which is a fair result. The major outlier is simulation A2 which a lambda of 50 is very unfair to pair C \(\rightarrow\) D, which can be attributed to bad luckwhich has no other reason than bad luck with random chance. When A keeps succeeding, C keeps getting blocked out.
+            The Fairness Index is the fraction of time that the channel is occupied by a pair A \(\rightarrow\) B over the fraction of time that the channel is occupied by pair C \(\rightarrow\) B or D as a function of \(\lambda\). Therefore, a high Fairness Index indicates that A is transmitting a lot, and the simulation is 'unfair' to pair C \(\rightarrow\) B or D. As shown in Figure 9, the fairness index when \(\lambda{} = \lambda{}_A = \lambda{}_C\) is generally around 1-2 which is a fair result. The major outlier is simulation A2 which a lambda of 50 is very unfair to pair C \(\rightarrow\) B or D, which can be attributed to bad luck with random chance; when A keeps succeeding, C keeps getting blocked out.
         }    
     
     
@@ -227,7 +227,7 @@
                 \label{fig:3B}
             \end{figure}
 
-            ----Explain 3B----
+            The Fairness Index when \(\lambda{}_A = 2\lambda{}, \lambda{}_C = \lambda{}\) yielded a much different result than when \(\lambda{} = \lambda{}_A = \lambda{}_C\). Figure 9 only goes up to a max Fairness Index of 8 whereas Figure 10 goes up to a max Fairness Index of 35 when \(\lambda\) = 200. The increase in \(\lambda\) for node A decreases the countdown between frames. This decrease in countdown time correlates to node A being favored over node C. Figure 10 shows that, in general, node pair pair A \(\rightarrow\) B is favored much greater when pair A \(\rightarrow\) B has \(\lambda{}_A = 2\lambda{}, \lambda{}_C = \lambda{}\). The simulations most close to a Fairness Index of 1 are simulation A1 (CSMA/CA) and B1 (CSMA/CA w/ hidden terminals), which show that adding virtual carrier sensing only hurts the throughput of pair C \(\rightarrow\) B or D.
         }    
     \end{enumerate}
 \end{document}  
