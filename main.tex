@@ -1,5 +1,5 @@
-\documentclass[11pt]{article}
-\usepackage[margin=0.5in]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
 \geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
 %\geometry{landscape}                % Activate for for rotated page geometry
 \usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
@@ -68,31 +68,40 @@
 
 \section{Throughput T}
 
-\renewcommand{\labelenumi}{{\bf\alph{enumi})}}
-\begin{enumerate}
-\item {\bf Node A:} Throughput T (Kbps) vs. rate \(\lambda{}\) (frames/sec) for scenarios A and B, and CSMA
-implementations 1 and 2.
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=5in]{1A.png}
-    \caption{Node A Throughput when \(\lambda{} = \lambda{}_A = \lambda{}_C\) }
-    \label{fig:1A}
-\end{figure}
+    \renewcommand{\labelenumi}{{\bf\alph{enumi})}}
+    \begin{enumerate}
+        \item { 
+            {\bf Node A:} Throughput T (Kbps) vs. rate \(\lambda{}\) (frames/sec) for scenarios A and B, and CSMA implementations 1 and 2.
+            
+            \begin{figure}[!htb]
+                \centering
+                \includegraphics[width=5in]{1A.png}
+                \caption{Node A Throughput when \(\lambda{} = \lambda{}_A = \lambda{}_C\) }
+                \label{fig:1A}
+            \end{figure}
+            
+            In general, for each Node A using a control \(\lambda{}\) value equal to that of C, the throughput begins with a decrease, followed by a gradual increase as the frame rate increases.
+        }
+        
+\clearpage
 
-In general, for each Node A using a control \(\lambda{}\) value equal to that of C, the throughput begins with a decrease, followed by a gradual increase as the frame rate increases.
+        \item {
+            {\bf Node C:} Throughput T (Kbps) vs. rate \(\lambda{}\) (frames/sec) for scenarios A and B, and CSMA implementations 1 and 2.
+            
+            \begin{figure}[!htb]
+                \centering
+                \includegraphics[width=5in]{1B.png}
+                \caption{NodeC Throughput when \(\lambda{} = \lambda{}_A = \lambda{}_C\) }
+                \label{fig:1B}
+            \end{figure}
 
-
-\item {\bf Node C:} Throughput T (Kbps) vs. rate \(\lambda{}\) (frames/sec) for scenarios A and B, and CSMA
-implementations 1 and 2.
-
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=5in]{1B.png}
-    \caption{Node A Throughput when \(\lambda{} = \lambda{}_A = \lambda{}_C\) }
-    \label{fig:1A}
-\end{figure}
-
-\end{enumerate}
-
+            ----Explain 1b----
+        }
+        
+        
+        
+        
+        
+    \end{enumerate}
 \end{document}  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
