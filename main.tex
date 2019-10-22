@@ -57,13 +57,17 @@
 
 \section*{Introduction:}
 
-    This project models four different scenarios where multiple nodes are transmitting packets over an 802.11 network protocol. The first two are based on a network where four nodes are in a single collision domain with two of the nodes transmitting frames in a Poisson-distributed manner. One of them uses generic CSMA/CA while the other also implements virtual carrier sensing. The second set are based on a network where the two nodes are sending to the same receiver while being hidden to one another. Once again, on uses CSMA/CA, while the other implements virtual carrier sensing.
+    This project models four different scenarios where multiple nodes are transmitting packets over an 802.11 network protocol. The first two are based on a network where four nodes are in a single collision domain with two of the nodes transmitting frames in a Poisson-distributed manner. One of them uses generic CSMA/CA {\bf (simulation A1)} while the other also implements virtual carrier sensing {\bf (simulation A2)}. The second set are based on a network where the two nodes are sending to the same receiver while being hidden to one another. Once again, on uses CSMA/CA {\bf (simulation B1)}, while the other implements virtual carrier sensing {\bf (simulation B2)}.
     \par
     The workload was split evenly between the two group members. Most of it was completed as a combined effort between them at the same time, such as the determined code structure and documentation. Lena was responsible of the logic of each simulation and the creation of a general Poisson arrival function. Mitchell was in charge of developing an automated graph creation system and creating a system to build and execute all simulations while outputting to the proper files.
     \par
     Development for the project consisted of the languages C, Make, CMake, Gnuplot, shell scripting, and \LaTeX{}. The actual simulation code was created in C using a set of six files and structs for nodes. Make and CMake were used to automatically compile and run simulations while using the CLion IDE. Gnuplot scripts were developped to automatically create each graph and export them to PNG files. Shell scripting was used to easily run the graph creation scripts. Finally, \LaTeX{} was used to create this document. For more specifics and the actual code, see the project on Github at \\
     \textcolor{blue}{ \href{https://github.com/lvoytek/ECE578/tree/master/DistributedCoordinationFunction}{https://github.com/lvoytek/ECE578/tree/master/DistributedCoordinationFunction}}.
-
+    
+    {\bf Simulation A1} - CSMA/CA \\
+    {\bf Simulation A2} - CSMA/CA with virtual carrier sensing \\
+    {\bf Simulation B1} - CSMA/CA hidden terminals \\
+    {\bf Simulation B2} - CSMA/CA hidden terminals with virtual carrier sensing
 \clearpage
 
 \section{Throughput T}
@@ -80,7 +84,7 @@
                 \label{fig:1A}
             \end{figure}
             
-            In general, for each Node A using a control \(\lambda{}\) value equal to that of C, the throughput begins with a decrease, followed by a gradual increase as the frame rate increases.
+            In general, for each Node A using a control \(\lambda{}\) value equal to that of C, the throughput begins with a decrease, followed by a gradual increase as the frame rate increases. The initial decrease is due to the amount of frames coming in overwhelming the network. However, it steadily increases later on as it takes advantage of the larger maximum back off window delays because of all the collisions.The throughput of simulation B2 takes a different turn though. This is because, with the RSA and hidden terminal, collisions are spread out and it cannot take advantage of the increasing back off windows.
         }
         
 \clearpage
@@ -95,11 +99,11 @@
                 \label{fig:1B}
             \end{figure}
 
-            ----Explain 1b----
+            Node C, unsurprisingly, follows a similar pattern to Node A in throughput when their \(\lambda{}\) values are equivalent. However in this case the throughput skips the slight decrease and follows through with a general increase. This is also the result of increasing back off times on A combined with the luck of often being the first node to transmit during a certain set of frames. B1 does not quite take advantage of this as it was probably hit with unfortunate frame timing, exacerbated by the fact that the nodes were unable to listen for each other's transmissions.
         }
         
 \clearpage
-        \item {
+        \item { %1C)
             {\bf Node A:} Throughput T (Kbps) vs. rate \(\lambda{}\) (frames/sec) for scenarios A and B, and CSMA implementations 1 and 2, when \(\lambda{}_A = 2\lambda{}\).
             
             \begin{figure}[!htb]
@@ -108,8 +112,9 @@
                 \caption{Node A Throughput when \(\lambda{}_A = 2\lambda{}, \lambda{}_C = \lambda{}\) }
                 \label{fig:1C}
             \end{figure}
-
-            ----Explain 1c----
+            
+            Node A shows a generally increasing Throughput as lambda increases while \(\lambda{}_A = 2\lambda{}\). This makes sense as over time the disparity between the two values increases exponentially. Given the sheer amount of frames arriving at A, its throughput would have to increase to keep up with the greater demand compared to C. As per usual, however, there is an outlier. B2 loses throughput because most of its RSA and CSA frames are colliding with C's, which only gets worse with more frames once the back off window is saturated.
+            
         }
         
 \clearpage
@@ -207,7 +212,7 @@
                 \label{fig:3A}
             \end{figure}
 
-            ----Explain 3A----
+            The Fairness Index is the fraction of time that the channel is occupied by a pair A \(\rightarrow\) B over the fraction of time that the channel is occupied by pair C \(\rightarrow\) D as a function of \(\lambda\). Therefore, a high Fairness Index indicates that A is transmitting a lot, and the simulation is 'unfair' to pair C \(\rightarrow\) D. As shown in Figure 9, the fairness index when \(\lambda{} = \lambda{}_A = \lambda{}_C\) is generally around 1-2 which is a fair result. The major outlier is simulation A2 which a lambda of 50 is very unfair to pair C \(\rightarrow\) D.
         }    
     
     
